@@ -8,18 +8,16 @@ from crawler.items import BrainItemLoader, BrainItem
 
 class GeekSpider(CrawlSpider):
     name = 'geek_spider'
-    
-    start_url = ['https://geekbrains.ru/courses']
     allowed_domains = ['geekbrains.ru']
+    start_urls = ['https://geekbrains.ru/courses']
     
     rules = (
         Rule(
             LinkExtractor(
                 restrict_xpaths=['//div[@class="gb-profession-cards-grid__content js-gb-profession-cards-grid-content"]'
                                 '//div[@class="gb-profession-cards-grid__item js-grid-item"]'],
-                allow=r'geekbrains.ru/\w+/\w+$'
-            ),
-            callback='parse_item'
+                allow=r'https://geekbrains.ru/\w+/\w+$'
+            ), 'parse_item'
         ),
     )
     
