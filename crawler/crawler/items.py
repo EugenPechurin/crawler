@@ -8,7 +8,11 @@
 import scrapy
 
 
-class CrawlerItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
+class BrainItem(scrapy.Item):
+    url = scrapy.Field()
+    title = scrapy.Field()
+    subtitle = scrapy.Field()
+    description = scrapy.Field()
+    logo = scrapy.Field()
+    teacher = scrapy.Field()
     pass
