@@ -8,6 +8,7 @@
 import scrapy
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import TakeFirst
+from scrapy.item import Item, Field
 
 class BrainItem(scrapy.Item):
     url = scrapy.Field()
@@ -18,8 +19,8 @@ class BrainItem(scrapy.Item):
     teacher = scrapy.Field()
     pass
 
-class BrainItemLoader(ItemLoader):
-    url_out = TakeFirst()
-    
-
+class BrainItemLoader(ItemLoader):  
+    url = Field()
+    title = Field()
+    subtitle = Field()
     

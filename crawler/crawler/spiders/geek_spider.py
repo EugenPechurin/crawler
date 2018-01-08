@@ -23,5 +23,9 @@ class GeekSpider(CrawlSpider):
     
     def parse_item(self, response):
         selector = Selector(response)
-        l = BrainItemLoader(BrainItem)
+        l = BrainItemLoader(BrainItem(), selector)
         l.add_value('url', response.url)
+        l.add_xpath("title", "//h1[@class='gb-landing-cover__title']/text()")
+        l.add_xpath("subtitle", "//div[@class='gb-landing-cover__desc']/p/text()")
+        
+        return l.load_item()
